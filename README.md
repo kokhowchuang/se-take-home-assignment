@@ -1,4 +1,14 @@
+## How to Test 
+
+1. Open terminal and go to the root folder.
+2. Type the code below to start testing.
+    > node server.js
+3. Visit [http://localhost:3000](http://localhost:3000) on browser.
+4. You can run unit testing by using:
+    > npm test
+
 ## FeedMe Software Engineer Take Home Assignment
+
 Below is a take home assignment before the interview of the position. You are required to
 1. Understand the situation and use case. You may contact the interviewer for further clarification.
 2. Fork this repo and implement the requirement with your most familiar tools.

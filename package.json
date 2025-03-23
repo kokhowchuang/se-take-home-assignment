@@ -1,0 +1,31 @@
+{
+  "name": "se-take-home-assignment",
+  "version": "1.0.0",
+  "description": "Below is a take home assignment before the interview of the position. You are required to 1. Understand the situation and use case. You may contact the interviewer for further clarification. 2. Fork this repo and implement the requirement with your most familiar tools. 3. Complete the requirement and perform your own testing. 4. Provide documentation for the any part that you think is needed. 5. Commit into your own github and share your repo with the interviewer. 6. Bring the source code and functioning prototype to the interview session.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll --no-cache --detectOpenHandles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kokhowchuang/se-take-home-assignment.git"
+  },
+  "author": "Josh Chuang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kokhowchuang/se-take-home-assignment/issues"
+  },
+  "homepage": "https://github.com/kokhowchuang/se-take-home-assignment#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "socket.io-client": "^4.8.1",
+    "supertest": "^7.1.0"
+  },
+  "jest": {
+    "testTimeout": 12000
+  }
+}

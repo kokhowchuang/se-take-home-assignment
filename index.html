@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>McDonald's Order System</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    // Display updated order list
+    socket.on('orderUpdated', (data) => {
+      console.log(data);
+      const pendingArea = document.getElementById('pendingOrders');
+      const processingArea = document.getElementById('processingOrders');
+      const completedArea = document.getElementById('completedOrders');
+
+      pendingArea.innerHTML = '';
+      processingArea.innerHTML = '';
+      completedArea.innerHTML = '';
+
+      // Show pending orders
+      data.pendingOrders.forEach(order => {
+        const orderElement = document.createElement('div');
+        orderElement.textContent = `Order ${order.id} - ${order.type}`;
+        pendingArea.appendChild(orderElement);
+      });
+
+      // Show processing orders
+      data.processingOrders.forEach(order => {
+        const orderElement = document.createElement('div');
+        orderElement.textContent = `Order ${order.id} - ${order.type} (Processing)`;
+        processingArea.appendChild(orderElement);
+      });
+
+      // Show completed orders
+      data.completedOrders.forEach(order => {
+        const orderElement = document.createElement('div');
+        orderElement.textContent = `Order ${order.id} - ${order.type} (Completed)`;
+        completedArea.appendChild(orderElement);
+      });
+    });
+
+    // Display updated bot list
+    socket.on('botUpdated', (bots) => {
+      const botArea = document.getElementById('botArea');
+      botArea.innerHTML = '';
+      bots.forEach(bot => {
+        const botElement = document.createElement('div');
+        botElement.textContent = `Bot ${bot.id} - ${bot.isIdle ? 'Idle' : 'Processing'}`;
+        botArea.appendChild(botElement);
+      });
+    });
+
+    // Add new normal order
+    function addNormalOrder() {
+      socket.emit('newNormalOrder');
+    }
+
+    // Add new VIP order
+    function addVIPOrder() {
+      socket.emit('newVIPOrder');
+    }
+
+    // Add new bot
+    function addBot() {
+      socket.emit('addBot');
+    }
+
+    // Remove a bot
+    function removeBot() {
+      socket.emit('removeBot');
+    }
+  </script>
+</head>
+<body>
+  <h1>McDonald's Order System</h1>
+  
+  <div>
+    <button onclick="addNormalOrder()">New Normal Order</button>
+    <button onclick="addVIPOrder()">New VIP Order</button>
+  </div>
+  
+  <h2>Pending Orders</h2>
+  <div id="pendingOrders"></div>
+
+  <h2>Processing Orders</h2>
+  <div id="processingOrders"></div>
+
+  <h2>Completed Orders</h2>
+  <div id="completedOrders"></div>
+
+  <h2>Bots</h2>
+  <div id="botArea"></div>
+  
+  <div>
+    <button onclick="addBot()">Add Bot</button>
+    <button onclick="removeBot()">Remove Bot</button>
+  </div>
+</body>
+</html>
