@@ -1,7 +1,9 @@
 ## How to Test 
 
 1. Open terminal and go to the root folder.
-2. Type the code below to start testing.
+2. First install the dependencies with:
+    > npm install 
+2. Then type the code below to start testing.
     > node server.js
 3. Visit [http://localhost:3000](http://localhost:3000) on browser.
 4. You can run unit testing by using:
